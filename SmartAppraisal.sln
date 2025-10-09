@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartAppraisal", "SmartAppraisal\SmartAppraisal.csproj", "{DCE81800-299B-43D8-96B7-D249A7FB6488}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DL", "DL", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLSmartAppraisal", "DLSmartAppraisal\DLSmartAppraisal.csproj", "{F32D83B7-82D0-43F1-9860-E70703197027}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{937F3EF1-B661-485B-96AE-90CB3C0D2E32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLSmartAppraisal", "BLSmartAppraisal\BLSmartAppraisal.csproj", "{F0E6FF22-966D-4610-A475-F540CEB5429A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ULSmartAppraisal", "ULSmartAppraisal\ULSmartAppraisal.csproj", "{BAC65D92-5F16-4B37-A077-A2E249AD5213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSmartAppraisal", "UnitTestSmartAppraisal\UnitTestSmartAppraisal.csproj", "{7D2D8899-84F3-4FA9-947A-02494621D9CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE81800-299B-43D8-96B7-D249A7FB6488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE81800-299B-43D8-96B7-D249A7FB6488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE81800-299B-43D8-96B7-D249A7FB6488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE81800-299B-43D8-96B7-D249A7FB6488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32D83B7-82D0-43F1-9860-E70703197027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32D83B7-82D0-43F1-9860-E70703197027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32D83B7-82D0-43F1-9860-E70703197027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32D83B7-82D0-43F1-9860-E70703197027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0E6FF22-966D-4610-A475-F540CEB5429A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E6FF22-966D-4610-A475-F540CEB5429A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E6FF22-966D-4610-A475-F540CEB5429A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E6FF22-966D-4610-A475-F540CEB5429A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC65D92-5F16-4B37-A077-A2E249AD5213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC65D92-5F16-4B37-A077-A2E249AD5213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC65D92-5F16-4B37-A077-A2E249AD5213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC65D92-5F16-4B37-A077-A2E249AD5213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2D8899-84F3-4FA9-947A-02494621D9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2D8899-84F3-4FA9-947A-02494621D9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2D8899-84F3-4FA9-947A-02494621D9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2D8899-84F3-4FA9-947A-02494621D9CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F32D83B7-82D0-43F1-9860-E70703197027} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F0E6FF22-966D-4610-A475-F540CEB5429A} = {937F3EF1-B661-485B-96AE-90CB3C0D2E32}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A23F13B-1A59-44DE-ABEF-0D1BF908E9D9}
+	EndGlobalSection
+EndGlobal
