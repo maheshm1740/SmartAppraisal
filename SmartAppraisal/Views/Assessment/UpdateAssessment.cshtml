@@ -1,0 +1,60 @@
+﻿@model DLSmartAppraisal.Model.AssessmentDetails
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Update Assessment";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/updateassessment.css" />
+}
+
+<div class="assessment-container">
+    <div class="assessment-card shadow-lg">
+        <h3 class="form-title">Update Assessment</h3>
+        <hr class="divider" />
+
+        <form asp-action="UpdateAssessment" method="post">
+            <input type="hidden" asp-for="AssesmentId" />
+
+            <!-- Name (Read-only) -->
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" readonly />
+            </div>
+
+            <!-- Date of Assessment -->
+            <div class="form-group mb-3">
+                <label asp-for="DateOfAssessment" class="form-label"></label>
+                <input asp-for="DateOfAssessment" type="date" class="form-control" />
+                <span asp-validation-for="DateOfAssessment" class="text-danger"></span>
+            </div>
+
+            <!-- Designation -->
+            <div class="form-group mb-3">
+                <label asp-for="Designation" class="form-label"></label>
+                <input asp-for="Designation" class="form-control" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+
+            <!-- Competency ID -->
+            <div class="form-group mb-3">
+                <label asp-for="CompId" class="form-label"></label>
+                <input asp-for="CompId" class="form-control" />
+                <span asp-validation-for="CompId" class="text-danger"></span>
+            </div>
+
+            <!-- IsActive Checkbox -->
+            <div class="form-check mb-4">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label"></label>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-update">Update</button>
+                <a asp-action="Assessments" class="btn btn-cancel">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

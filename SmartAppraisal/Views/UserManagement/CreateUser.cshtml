@@ -4,80 +4,129 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Create User</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Create User</h2>
+<div class="container register">
+    <div class="row">
 
-        <form asp-action="CreateUser">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <div class="col-md-3 register-left">
+            <h3>Welcome</h3>
+            <p>Create user accounts for your organization!</p>
+            <a asp-controller="UserManagement" asp-action="Index">Back to List</a>
+        </div>
 
-            <div class="mb-3">
-                <label asp-for="UserId" class="form-label"></label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
+        <div class="col-md-9 register-right">
+            <h3 class="register-heading">Create User</h3>
 
-            <div class="mb-3">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-info">@ViewBag.Message</div>
+            }
 
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+            <form asp-action="CreateUser" method="post" autocomplete="off" id="createUserForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="UserId" class="form-label"></label>
+                            <input asp-for="UserId" class="form-control" />
+                            <span asp-validation-for="UserId" class="text-danger"></span>
+                        </div>
 
-            <div class="mb-3">
-                <label asp-for="EmpId" class="form-label"></label>
-                <input asp-for="EmpId" class="form-control" />
-                <span asp-validation-for="EmpId" class="text-danger"></span>
-            </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
 
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
 
-            <div class="mb-3">
-                <label asp-for="DesignationId" class="form-label">Designation</label>
-                <select asp-for="DesignationId" class="form-select" asp-items="ViewBag.DesigList">
-                    <option value="">-- Select Designation --</option>
-                </select>
-                <span asp-validation-for="DesignationId" class="text-danger"></span>
-            </div>
+                        <div class="mb-3">
+                            <label asp-for="EmpId" class="form-label"></label>
+                            <input asp-for="EmpId" class="form-control" />
+                            <span asp-validation-for="EmpId" class="text-danger"></span>
+                        </div>
+                    </div>
 
-            <div class="mb-3">
-                <label asp-for="RoleId" class="form-label">Role</label>
-                <select asp-for="RoleId" class="form-select" asp-items="ViewBag.RoleList">
-                    <option value="">-- Select Role --</option>
-                </select>
-                <span asp-validation-for="RoleId" class="text-danger"></span>
-            </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
 
-            <div class="form-check mb-4">
-                <input class="form-check-input" asp-for="IsActive" />
-                <label class="form-check-label" asp-for="IsActive"></label>
-                <span asp-validation-for="IsActive" class="text-danger"></span>
-            </div>
+                        <div class="mb-3">
+                            <label asp-for="DesignationId" class="form-label"></label>
+                            <select asp-for="DesignationId" class="form-select"
+                                    asp-items="@(ViewBag.DesigList as List<SelectListItem>)">
+                                <option value="">-- Select Designation --</option>
+                            </select>
+                            <span asp-validation-for="DesignationId" class="text-danger"></span>
+                        </div>
 
-            <button type="submit" class="btn btn-primary">Create</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
-        </form>
+                        <div class="mb-3">
+                            <label asp-for="RoleId" class="form-label"></label>
+                            <select asp-for="RoleId" class="form-select"
+                                    asp-items="@(ViewBag.RoleList as List<SelectListItem>)">
+                                <option value="">-- Select Role --</option>
+                            </select>
+                            <span asp-validation-for="RoleId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label"></label>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="submit" class="btnRegister btnCreate">Create</button>
+                            <a asp-controller="Home" asp-action="Index" class="btnRegister btnCancel">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@section Styles {
+    <link rel="stylesheet" href="~/css/create_user.css" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#createUserForm").validate({
+                rules: {
+                    UserId: { required: true, maxlength: 20 },
+                    Password: { required: true, minlength: 6, maxlength: 20 },
+                    Name: { required: true, maxlength: 50 },
+                    EmpId: { required: true, maxlength: 10 },
+                    Email: { required: true, email: true },
+                    DesignationId: { required: true },
+                    RoleId: { required: true }
+                },
+                messages: {
+                    UserId: { required: "Please enter User ID", maxlength: "Cannot exceed 20 characters" },
+                    Password: { required: "Please enter Password", minlength: "At least 6 characters", maxlength: "Cannot exceed 20 characters" },
+                    Name: { required: "Please enter Name", maxlength: "Cannot exceed 50 characters" },
+                    EmpId: { required: "Please enter Employee ID", maxlength: "Cannot exceed 10 characters" },
+                    Email: { required: "Please enter Email", email: "Enter a valid email address" },
+                    DesignationId: { required: "Please select Designation" },
+                    RoleId: { required: "Please select Role" }
+                },
+                errorClass: "text-danger",
+                errorElement: "div",
+                highlight: function (element) { $(element).addClass("is-invalid"); },
+                unhighlight: function (element) { $(element).removeClass("is-invalid"); }
+            });
+        });
+    </script>
+}

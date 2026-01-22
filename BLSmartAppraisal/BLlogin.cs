@@ -10,7 +10,12 @@ namespace BLSmartAppraisal
 {
     public class BLlogin
     {
-        AuthRepository _repo = new AuthRepository();
+        private readonly AuthRepository _repo;
+
+        public BLlogin(AuthRepository repo)
+        {
+            _repo = repo;
+        }
 
        public UserDetails AuthenticateUser(UserViewModel user)
         {
@@ -26,14 +31,13 @@ namespace BLSmartAppraisal
 
         public UserDetails UpdatePassword(ChangePassword changePassword)
         {
-            if(changePassword!=null && !string.IsNullOrEmpty(changePassword.newPassword))
+            if (changePassword != null && !string.IsNullOrEmpty(changePassword.newPassword))
             {
-                if(changePassword.newPassword == changePassword.confirmPassword)
+                if (changePassword.newPassword != changePassword.OldPassword && changePassword.newPassword == changePassword.confirmPassword)
                 {
                     return _repo.UpdatePassword(changePassword);
                 }
             }
-
             return null;
         }
     }

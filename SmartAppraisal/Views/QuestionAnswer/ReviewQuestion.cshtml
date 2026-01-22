@@ -1,0 +1,82 @@
+﻿@model DLSmartAppraisal.Model.QuestionReviewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/questionform.css" />
+
+<div class="add-question-page">
+    <div class="form-container">
+        <h2>Review / Edit Question</h2>
+
+        <form asp-controller="QuestionAnswer" asp-action="ReviewQuestion" method="post">
+            <input type="hidden" asp-for="QuestionId" />
+
+            <div class="form-group">
+                <label for="questionText">Question</label>
+                <input asp-for="QuestionText" id="questionText" class="form-control" placeholder="Enter question" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="option1">Option 1 (A)</label>
+                    <input asp-for="Option1" id="option1" class="form-control" placeholder="Option A" required />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="option2">Option 2 (B)</label>
+                    <input asp-for="Option2" id="option2" class="form-control" placeholder="Option B" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="option3">Option 3 (C)</label>
+                    <input asp-for="Option3" id="option3" class="form-control" placeholder="Option C" required />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="option4">Option 4 (D)</label>
+                    <input asp-for="Option4" id="option4" class="form-control" placeholder="Option D" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="correctAnswer">Correct Answer</label>
+                <select asp-for="CorrectAnswer" id="correctAnswer" class="form-control" required title="Select the correct answer">
+                    <option value="">-- Select Correct Answer --</option>
+                    <option value="1">1 (A)</option>
+                    <option value="2">2 (B)</option>
+                    <option value="3">3 (C)</option>
+                    <option value="4">4 (D)</option>
+                </select>
+                <small class="hint-text">Choose 1 for A, 2 for B, 3 for C, 4 for D</small>
+            </div>
+
+            <div class="button-group" style="display: flex; gap: 10px; margin-top: 15px;">
+                <button type="submit" class="btn-submit" style="flex: 1;">Update Question</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='@Url.Action("QuestionList", "QuestionAnswer")'" style="flex: 1;">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .btn-cancel {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+</style>

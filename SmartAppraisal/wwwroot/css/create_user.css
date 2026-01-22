@@ -1,0 +1,191 @@
+﻿/* ==============================
+   Page Background (Matches Home Page)
+============================== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    min-height: calc(100vh - 60px);
+}
+
+/* ==============================
+   Registration Container (Glassmorphism Style)
+============================== */
+.register {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    align-content: center;
+    margin-top: 2%;
+    padding: 5%;
+    border-radius: 1rem;
+    color: #f5faff;
+    transition: all 0.3s ease;
+}
+
+    .register:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+/* ==============================
+   Left Section
+============================== */
+.register-left {
+    text-align: center;
+    align-content: center;
+}
+
+    .register-left input,
+    .register-left a {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 10px 20px;
+        width: 60%;
+        background: #ffffff;
+        font-weight: bold;
+        color: #3c3c3c;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .register-left input:hover,
+        .register-left a:hover {
+            background: #f0f0f0;
+        }
+
+    .register-left img {
+        margin-top: 15%;
+        margin-bottom: 5%;
+        width: 25%;
+        animation: mover 1s infinite alternate;
+    }
+
+@keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.register-left p {
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+
+/* ==============================
+   Right Section (Remains Same)
+============================== */
+.register-right {
+    background: #e6e6e7;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+    padding: 20px 40px 20px 44px;
+    margin-top: -10px;
+    color: #495057;
+}
+
+/* ==============================
+   Form Headings & Inputs
+============================== */
+.register-heading {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    background-color: #fff;
+}
+
+    .form-control:focus {
+        border-color: #5b86e5;
+        box-shadow: 0 0 8px rgba(91, 134, 229, 0.3);
+        outline: none;
+    }
+
+::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+.form-select {
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    background-color: #fff;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='gray' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14l-4.796-5.481A.5.5 0 0 1 2.5 5h11a.5.5 0 0 1 .386.81l-4.796 5.481a.5.5 0 0 1-.772 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem auto;
+    padding-right: 2.5rem;
+}
+
+    .form-select:focus {
+        border-color: #5b86e5;
+        box-shadow: 0 0 8px rgba(91, 134, 229, 0.3);
+        outline: none;
+    }
+
+.form-check-input {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 0.3rem;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .form-check-input:checked {
+        background-color: #5b86e5;
+        border-color: #5b86e5;
+    }
+
+.form-check-label {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ==============================
+   Buttons
+============================== */
+.btnRegister {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 8px 20px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btnCreate {
+    background: linear-gradient(135deg, #4da6ff, #357edd);
+    color: #fff;
+}
+
+.btnCancel {
+    background: linear-gradient(45deg, #ff5858, #f09819);
+    color: #fff;
+}
+
+    .btnCreate:hover,
+    .btnCancel:hover {
+        filter: brightness(1.15);
+    }

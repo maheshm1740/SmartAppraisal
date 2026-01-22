@@ -9,29 +9,46 @@ namespace DLSmartAppraisal.Repository
 {
     public class AuthRepository
     {
-        UserContext userContext = new UserContext();
+        private readonly UserContext _context;
+
+        public AuthRepository(UserContext context)
+        {
+            _context = context;
+        }
 
         public UserDetails AuthenticateUser(UserViewModel user)
         {
             if (user != null && !string.IsNullOrEmpty(user.UserId) && !string.IsNullOrEmpty(user.Password))
             {
-                return userContext.Users.FirstOrDefault(u => u.UserId == user.UserId && u.Password == user.Password);
+                return _context.Users.FirstOrDefault(u => u.UserId == user.UserId && u.Password == user.Password);
             }
             return null;
         }
 
         public UserDetails UpdatePassword(ChangePassword changePassword)
         {
-            UserDetails authUser = AuthenticateUser(changePassword.usermodel);
+            if (changePassword != null && !string.IsNullOrEmpty(changePassword.newPassword))
+            {   
+                if (changePassword.newPassword!=changePassword.OldPassword && changePassword.newPassword == changePassword.confirmPassword)
+                {                    
+                    var userView = new UserViewModel
+                    {
+                        UserId = changePassword.UserId,
+                        Password = changePassword.OldPassword
+                    };
 
-            if(authUser !=null && changePassword.newPassword==changePassword.confirmPassword)
-            {
-                authUser.Password = changePassword.newPassword;
-                authUser.PasswordChangeDate = DateTime.Now;
-                userContext.SaveChanges();
+                    UserDetails authUser = AuthenticateUser(userView);
+
+                    if (authUser != null)
+                    {
+                        authUser.Password = changePassword.newPassword;
+                        authUser.PasswordChangeDate = DateTime.Now;
+                        _context.SaveChanges();
+                        return authUser;
+                    }
+                }
             }
-
-            return authUser;
+            return null;
         }
     }
 }

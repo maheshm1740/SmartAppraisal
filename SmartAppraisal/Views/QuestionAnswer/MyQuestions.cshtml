@@ -1,0 +1,150 @@
+﻿@model IEnumerable<DLSmartAppraisal.Model.Question>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Questions";
+}
+
+<link rel="stylesheet" href="~/css/questions.css" />
+
+<div class="container">
+    <div class="glass-card">
+        <div class="card-header">
+            <h2>My Created Questions</h2>
+        </div>
+
+        @if (TempData["Message"] != null)
+        {
+            <div id="success-message" class="alert alert-success text-center">
+                @TempData["Message"]
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const msg = document.getElementById('success-message');
+                    if (msg) {
+                        msg.style.opacity = '0';
+                        setTimeout(() => msg.remove(), 500);
+                    }
+                }, 2000);
+            </script>
+
+            <style>
+                #success-message {
+                    transition: opacity 0.5s ease;
+                    opacity: 1;
+                    margin-bottom: 15px;
+                }
+            </style>
+        }
+
+        <div class="table-responsive">
+            <table class="table-grid">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Question</th>
+                        <th>Correct Answer</th>
+                        <th>Competency</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var reviewed = Model.Where(q => q.IsReviewed).OrderByDescending(q => q.Id).ToList();
+                        var pending = Model.Where(q => !q.IsReviewed).OrderByDescending(q => q.Id).ToList();
+                        var allQuestions = reviewed.Concat(pending);
+                    }
+
+                    @foreach (var item in allQuestions)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.QuestionText</td>
+                            <td>@item.CorrectAnswer</td>
+                            <td>
+                                @(ViewBag.Competencies.ContainsKey(item.ComptencyId)
+                                                            ? ViewBag.Competencies[item.ComptencyId]
+                                                            : "N/A")
+                        </td>
+                        <td>
+                            @if (item.IsReviewed)
+                                {
+                                    <span class="badge bg-success text-light px-3 py-2 rounded-pill">Reviewed</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Pending Review</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end mt-3">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-light">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .glass-card {
+        background: rgba(47, 54, 64, 0.9);
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        margin-top: 40px;
+    }
+
+    .card-header {
+        border-bottom: 1px solid #444;
+        margin-bottom: 20px;
+    }
+
+        .card-header h2 {
+            color: #f1f1f1;
+            font-weight: 600;
+        }
+
+    .table-grid {
+        width: 100%;
+        border-collapse: collapse;
+        color: #e0e0e0;
+    }
+
+        .table-grid th {
+            background-color: #3b3b3b;
+            color: #ddd;
+            font-weight: 500;
+            padding: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .table-grid td {
+            background-color: #2f3640;
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+
+        .table-grid tr:hover td {
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: 0.2s ease-in-out;
+        }
+
+    .badge {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .btn-outline-light {
+        border: 1px solid #888;
+        color: #e6e6e6;
+    }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+</style>

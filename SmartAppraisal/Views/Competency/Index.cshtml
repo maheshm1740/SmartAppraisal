@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DLSmartAppraisal.Model.CompetencyDetails>
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Competencies";
+}
+
+@section Styles {
+    <link href="~/css/competency-list.css" rel="stylesheet" />
+}
+
+<div class="container-main">
+    <div class="header-section">
+        <h2>Competency List</h2>
+        @if(Context.Session.GetString("curRole") == "Admin")
+        {
+            <a asp-action="AddCompetency" class="btn-add">
+                <i class="bi bi-plus-circle me-1"></i> Add New
+            </a>
+        }
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert-success-custom">
+            <span>@TempData["Success"]</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Role</th>
+                    <th>Created Date</th>
+                    <th>Created By</th>
+                    @* <th>Actions</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CompId</td>
+                        <td>@item.CompDescription</td>
+                        <td>@item.RoleId</td>
+                        <td>@item.CreatedDate.ToString("dd-MM-yyyy")</td>
+                        <td>@item.CreatedBy</td>
+                        @* <td class="action-buttons">
+                            <a asp-action="EditCompetency" asp-route-id="@item.CompId" class="btn-edit" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-action="DetailsCompetency" asp-route-id="@item.CompId" class="btn-view" title="View">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a asp-action="DeleteCompetency" asp-route-id="@item.CompId" class="btn-delete" title="Delete">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-dismiss success alert after 2.5 seconds
+        setTimeout(() => {
+            const alert = document.querySelector('.alert-success-custom');
+            if (alert) alert.style.opacity = '0';
+        }, 2500);
+    </script>
+}

@@ -1,0 +1,79 @@
+﻿@model DLSmartAppraisal.Model.QuestionViewModel
+@{
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/questionform.css" />
+
+<div class="add-question-page">
+    <div class="form-container">
+        <h2>Add New Question</h2>
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div id="success-message" class="success-alert">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+        <form asp-controller="QuestionAnswer" asp-action="Add" method="post" autocomplete="off">
+            <div class="form-group">
+                <label>Competency</label>
+                <select asp-for="ComptencyId" asp-items="ViewBag.CompeList" class="form-control" required>
+                    <option value="">-- Select Competency --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Question</label>
+                <input asp-for="QuestionText" class="form-control" placeholder="Enter question" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Option 1 (A)</label>
+                    <input asp-for="Option1" class="form-control" placeholder="Option A" required />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Option 2 (B)</label>
+                    <input asp-for="Option2" class="form-control" placeholder="Option B" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Option 3 (C)</label>
+                    <input asp-for="Option3" class="form-control" placeholder="Option C" required />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Option 4 (D)</label>
+                    <input asp-for="Option4" class="form-control" placeholder="Option D" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Correct Answer</label>
+                <select asp-for="CorrectAnswer" class="form-control" required>
+                    <option value="">-- Select Correct Answer --</option>
+                    <option value="1">1 (A)</option>
+                    <option value="2">2 (B)</option>
+                    <option value="3">3 (C)</option>
+                    <option value="4">4 (D)</option>
+                </select>
+                <small class="hint-text">Choose 1 for A, 2 for B, 3 for C, 4 for D</small>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit">Submit Question</button>
+                <a asp-controller="Home" asp-action="Index" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        const msg = document.getElementById('success-message');
+        if (msg) msg.style.display = 'none';
+    }, 1500);
+</script>

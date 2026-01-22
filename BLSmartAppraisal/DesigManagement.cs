@@ -1,4 +1,5 @@
-﻿using DLSmartAppraisal.Model;
+﻿using DLSmartAppraisal.Abstract;
+using DLSmartAppraisal.Model;
 using DLSmartAppraisal.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,12 @@ namespace BLSmartAppraisal
 {
     public class DesigManagement
     {
-        DesignationRepository _repo = new DesignationRepository();
+        private readonly IDesignation _repo;
+
+        public DesigManagement(IDesignation repo)
+        {
+            _repo = repo;
+        }
 
         public List<DesignationDetails> GetDesignations()
         {

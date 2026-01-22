@@ -3,18 +3,28 @@ using DLSmartAppraisal.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SmartAppraisal.Controllers
 {
     [Authorize]
     public class UserManagementController : Controller
     {
-        BLUserManagement userBl = new BLUserManagement();
+        private readonly BLUserManagement _userBl;
+        private readonly BLRoleManagement _roleBl;
+        private readonly DesigManagement _desigBl;
 
-        [Authorize(Roles ="Admin")]
+        public UserManagementController( BLUserManagement userBl, BLRoleManagement roleBl, DesigManagement desigBl)
+        {
+            _userBl = userBl;
+            _roleBl = roleBl;
+            _desigBl = desigBl;
+        }
+
+        [Authorize(Roles ="Admin, HR")]
         public IActionResult Index()
         {
-            List<UserDetails> details = userBl.AllUsers();
+            List<UserDetails> details = _userBl.AllUsers();
             return View(details);
         }
 
@@ -22,11 +32,9 @@ namespace SmartAppraisal.Controllers
         [Authorize(Roles ="Admin,HR")]
         public IActionResult CreateUser()
         {
-            BLRoleManagement roleManagement = new BLRoleManagement();
-            DesigManagement desig = new DesigManagement();
 
-            var desigs = desig.GetDesignations();
-            var roles = roleManagement.AllRoles();
+            var desigs = _desigBl.GetDesignations();
+            var roles = _roleBl.AllRoles();
 
             ViewBag.DesigList = desigs.Select(d => new SelectListItem
             {
@@ -47,37 +55,47 @@ namespace SmartAppraisal.Controllers
         [Authorize(Roles = "Admin, HR")]
         public IActionResult CreateUser(UserDetails userDetails)
         {
-            if (ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-                var curUserId = HttpContext.Session.GetString("curUserId");
-                var curRole = HttpContext.Session.GetString("curRole");
-                
-                string message = userBl.addUser(userDetails,curUserId,curRole);
-                ViewBag.Message = message;
-                return RedirectToAction("Index");
+                LoadDropdowns(userDetails);
+                return View(userDetails);
             }
 
-            BLRoleManagement roleManagement = new BLRoleManagement();
-            var roles = roleManagement.AllRoles();
+            var curUserId = HttpContext.Session.GetString("curUserId");
+            var curRole = HttpContext.Session.GetString("curRole");
 
-            DesigManagement desig = new DesigManagement();
-            var desigs = desig.GetDesignations();
+            string message = _userBl.addUser(userDetails, curRole, curUserId);
+            TempData["Message"] = message;
 
-            ViewBag.DesigList = desigs.Select(d => new SelectListItem
-            {
-                Text = d.DesgName,
-                Value = d.DesgId.ToString(),
-                Selected = (d.DesgId == userDetails.DesignationId)
-            }).ToList();
+            return RedirectToAction("Index");
+        }
 
-            ViewBag.RoleList = roles.Select(r => new SelectListItem
-            {
-                Text = r.RoleName,
-                Value = r.RoleId.ToString(),
-                Selected = (r.RoleId == userDetails.RoleId)
-            }).ToList();
+        private void LoadDropdowns(UserDetails userDetails)
+        {
+            ViewBag.DesigList = _desigBl.GetDesignations()
+                .Select(d => new SelectListItem
+                {
+                    Text = d.DesgName,
+                    Value = d.DesgId.ToString(),
+                    Selected = d.DesgId == userDetails.DesignationId
+                }).ToList();
 
-            return View(userDetails);
+            ViewBag.RoleList = _roleBl.AllRoles()
+                .Select(r => new SelectListItem
+                {
+                    Text = r.RoleName,
+                    Value = r.RoleId.ToString(),
+                    Selected = r.RoleId == userDetails.RoleId
+                }).ToList();
+        }
+
+        public IActionResult DisplayUser()
+        {
+            var cur = HttpContext.Session.GetString("curUserId");
+
+            var user = _userBl.GetUserByUserId(cur);
+
+            return View(user);
         }
     }
 }

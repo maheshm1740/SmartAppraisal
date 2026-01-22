@@ -11,7 +11,12 @@ namespace BLSmartAppraisal
 {
     public class BLUserManagement
     {
-        IUserManagementRepositoryAdmin _repo = new UserManagementRepository();
+        private readonly IUserManagementRepositoryAdmin _repo;
+
+        public BLUserManagement(IUserManagementRepositoryAdmin repo)
+        {
+            _repo = repo;
+        }
 
         public List<UserDetails> AllUsers()
         {
@@ -26,23 +31,30 @@ namespace BLSmartAppraisal
         }
         public UserDetails GetUserByUserId(string userId)
         {
-            if (userId != null)
-            {
-                return _repo.GetUserByUserId(userId);
-            }
+            if (string.IsNullOrEmpty(userId)) return null;
 
-            return null;
+            return _repo.GetUserByUserId(userId);
         }
         public string addUser(UserDetails user, string curId, string curRole)
         {
+            if (user == null) return "invalid user data.";
+
             UserDetails curUser = GetUserByUserId(curId);
 
             user.CreatedDate = DateTime.Now;
-            user.ModeifiedDate = DateTime.Now;
+            user.ModifiedDate = DateTime.Now;
             user.PasswordChangeDate = null;
-            user.CreatedBy = $"{curUser.Name} ({curRole})";
-            user.ModeifiedBy = "Dummy";
-           return _repo.AddUserDetails(user);
+            user.CreatedBy = $"{curUser?.Name ?? "System"}({curRole})";
+            user.ModifiedBy = "System";
+
+            return _repo.AddUserDetails(user);
+        }
+
+        public List<UserDetails> GetAllcandidates(int roleId)
+        {
+            if (roleId <= 0) return null;
+
+            return _repo.GetUsersByRole(roleId);
         }
     }
 }

@@ -10,5 +10,7 @@ namespace DLSmartAppraisal.Abstract
     public interface IRoleRepository
     {
         List<RoleDetails> GetRoles();
+
+        int GetRoleId(string name);
     }
 }

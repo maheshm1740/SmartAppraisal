@@ -9,14 +9,7 @@ namespace DLSmartAppraisal.Model
 {
     public class RoleContext : DbContext
     {
+        public RoleContext(DbContextOptions<RoleContext> options) : base(options){ }
         public DbSet<RoleDetails> roles { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=SmartAppraisalDB;Trusted_Connection=True;TrustServerCertificate=True;");
-            }
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }

@@ -1,0 +1,124 @@
+﻿/* ===== Page Background ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ===== Glass Card ===== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
+    color: #f1f1f1;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+/* ===== Card Header ===== */
+.card-header {
+    background: rgba(14, 165, 233, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+    .card-header h2 {
+        font-weight: 600;
+        color: #38bdf8;
+        margin: 0;
+    }
+
+/* ===== Table Styling ===== */
+.table-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.6);
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+    .table-grid th,
+    .table-grid td {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 16px;
+        vertical-align: middle;
+        color: #e5e7eb;
+    }
+
+    .table-grid th {
+        background: rgba(14, 165, 233, 0.25);
+        color: #e0f2fe;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .table-grid tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .table-grid tr:hover {
+        background: rgba(14, 165, 233, 0.15);
+        transition: background 0.3s ease;
+    }
+
+/* ===== Buttons ===== */
+.gradient-btn {
+    background: linear-gradient(90deg, #0ea5e9, #6366f1);
+    border: none;
+    border-radius: 30px;
+    padding: 6px 14px;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .gradient-btn:hover {
+        background: linear-gradient(90deg, #3b82f6, #14b8a6);
+        transform: scale(1.05);
+        box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
+    }
+
+/* ===== Back Button ===== */
+.btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #f1f1f1;
+    border-radius: 30px;
+    padding: 6px 14px;
+    transition: all 0.3s ease;
+}
+
+    .btn-outline-light:hover {
+        background: rgba(14, 165, 233, 0.3);
+        color: #fff;
+        box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+    }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 15px;
+    }
+
+    .table-grid th,
+    .table-grid td {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    .gradient-btn,
+    .btn-outline-light {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+}

@@ -10,10 +10,15 @@ namespace DLSmartAppraisal.Repository
 {
     public class DesignationRepository:IDesignation
     {
-        DesignationContext context = new DesignationContext();
+        private readonly DesignationContext _context;
+
+        public DesignationRepository(DesignationContext context)
+        {
+            _context = context;
+        }
         public List<DesignationDetails> GetDesignations()
         {
-            return context.designations.ToList();
+            return _context.designations.ToList();
         }
     }
 }

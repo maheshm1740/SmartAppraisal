@@ -1,13 +1,17 @@
 ﻿using BLSmartAppraisal;
 using DLSmartAppraisal.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace SmartAppraisal.Controllers
 {
     public class AccountController : Controller
     {
-        BLlogin bl = new BLlogin();
+        private readonly BLlogin _login;
+
+        public AccountController(BLlogin login)
+        {
+            _login = login;
+        }
 
         [HttpGet]
         public IActionResult ChangePassword()
@@ -17,37 +21,61 @@ namespace SmartAppraisal.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangePassword(ChangePassword changePassword)
+        public IActionResult ChangePassword(ChangePassword model)
         {
-            if (changePassword.usermodel == null)
+            ViewBag.UserId = model.UserId;
+
+            if (string.IsNullOrEmpty(model.UserId))
             {
-                ViewBag.Error = "User information missing.";
-                return View(changePassword);
+                ViewBag.ErrorMessage = "User information missing.";
+                return View(model);
             }
 
-            var userDetails = bl.AuthenticateUser(changePassword.usermodel);
-
-            if (userDetails != null &&
-                !string.IsNullOrEmpty(changePassword.newPassword) &&
-                !string.IsNullOrEmpty(changePassword.confirmPassword))
+            if (string.IsNullOrEmpty(model.OldPassword))
             {
-                if (changePassword.newPassword == changePassword.confirmPassword)
-                {
-                    bl.UpdatePassword(changePassword);
-                    return RedirectToAction("Index", "Login");
-                }
-                else
-                {
-                    ViewBag.Error = "Passwords do not match.";
-                }
+                ViewBag.ErrorMessage = "Old password is required.";
+                return View(model);
+            }
+
+            if (string.IsNullOrEmpty(model.newPassword) || string.IsNullOrEmpty(model.confirmPassword))
+            {
+                ViewBag.ErrorMessage = "New password and confirm password are required.";
+                return View(model);
+            }
+
+            if (model.newPassword != model.confirmPassword)
+            {
+                ViewBag.ErrorMessage = "New password and confirm password do not match.";
+                return View(model);
+            }
+
+            if (model.newPassword == model.OldPassword)
+            {
+                ViewBag.ErrorMessage = "New password cannot be the same as old password.";
+                return View(model);
+            }
+
+            var result = _login.UpdatePassword(model);
+
+            if (result != null)
+            {
+                ViewBag.SuccessMessage = "Password changed successfully! Redirecting to login...";
+                ViewBag.Redirect = true;
+                return View(model);
             }
             else
             {
-                ViewBag.Error = "Invalid credentials or fields missing.";
+                ViewBag.ErrorMessage = "Invalid credentials. Please check your old password.";
+                return View(model);
             }
-
-            return View(changePassword);
         }
 
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            Response.Cookies.Delete(".AspNetCore.Session");
+            return RedirectToAction("Index", "Login");
+        }
     }
 }

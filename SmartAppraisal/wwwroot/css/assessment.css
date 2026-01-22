@@ -1,0 +1,177 @@
+﻿/* ===== Page Background ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ===== Container ===== */
+.assessment-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 30px 35px;
+    margin: 60px auto;
+    max-width: 1300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+    /* ===== Page Heading ===== */
+    .assessment-container h3 {
+        color: #ffffff;
+        font-weight: 700;
+        margin-bottom: 25px;
+        letter-spacing: 0.5px;
+    }
+
+    /* ===== Create Button ===== */
+    .assessment-container .btn-primary {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        padding: 8px 16px;
+        font-size: 0.95rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .assessment-container .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+/* ===== Table Wrapper ===== */
+.table-responsive {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* ===== Table Styles ===== */
+.assessment-container table.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    /* ✅ FIXED HEADER STYLING */
+    .assessment-container table.table thead tr {
+        background: linear-gradient(135deg, #4a69bd, #182848) !important;
+    }
+
+    .assessment-container table.table thead th {
+        color: #f8f9fa !important;
+        font-weight: 700 !important;
+        padding: 14px !important;
+        text-transform: uppercase;
+        font-size: 0.9rem !important;
+        letter-spacing: 0.5px;
+        text-align: center !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    /* ===== Table Body ===== */
+    .assessment-container table.table tbody tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .assessment-container table.table tbody td {
+        background: transparent !important;
+        color: #e0e0e0 !important;
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.9rem;
+        transition: background 0.2s ease;
+    }
+
+/* ===== Row Hover ===== */
+.assessment-container table.table-hover tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ===== Badges ===== */
+.assessment-container .badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+    .assessment-container .badge.bg-success {
+        background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+        color: #fff !important;
+    }
+
+    .assessment-container .badge.bg-secondary {
+        background: linear-gradient(135deg, #636e72, #2d3436) !important;
+        color: #fff !important;
+    }
+
+/* ===== Action Buttons ===== */
+.assessment-container .btn-outline-warning,
+.assessment-container .btn-outline-info,
+.assessment-container .btn-outline-danger {
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+    .assessment-container .btn-outline-warning:hover {
+        background: #f1c40f !important;
+        color: #000 !important;
+    }
+
+    .assessment-container .btn-outline-info:hover {
+        background: #3498db !important;
+        color: #fff !important;
+    }
+
+    .assessment-container .btn-outline-danger:hover {
+        background: #e74c3c !important;
+        color: #fff !important;
+    }
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .assessment-container {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+        .assessment-container .table th,
+        .assessment-container .table td {
+            font-size: 0.85rem;
+            padding: 8px;
+        }
+
+        .assessment-container .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .assessment-container .btn {

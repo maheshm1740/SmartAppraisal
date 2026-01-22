@@ -1,0 +1,222 @@
+﻿/* ===== Global Page Style ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px 0;
+    color: #f0f0f0;
+    min-height: 100vh;
+}
+
+/* ===== Container ===== */
+.container-main {
+    width: 98%;
+    margin: 0 auto;
+}
+
+/* ===== Heading ===== */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Filters Section ===== */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    justify-content: flex-start;
+    background: rgba(40, 48, 72, 0.6); /* updated */
+    backdrop-filter: blur(12px);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    align-items: center;
+}
+
+    /* Inputs & Dropdowns */
+    .filters input,
+    .filters select {
+        border-radius: 8px;
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.9);
+        color: #222;
+        transition: all 0.3s ease;
+        min-width: 180px;
+        font-weight: 500;
+    }
+
+        .filters input::placeholder {
+            color: #555;
+        }
+
+        .filters input:focus,
+        .filters select:focus {
+            outline: none;
+            border-color: #ffcc00;
+            box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+            background: #fff;
+        }
+
+/* Search Input Width */
+.searchInput {
+    flex: 1;
+    min-width: 350px;
+    max-width: 450px;
+}
+
+/* ===== Reset Button ===== */
+#resetFilters {
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+    #resetFilters:hover {
+        background: linear-gradient(135deg, #ffcc00, #ff9900);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    #resetFilters:focus {
+        outline: none;
+        box-shadow: 0 0 12px rgba(255, 204, 0, 0.6);
+    }
+
+/* ===== Table Container ===== */
+.table-container {
+    background: rgba(25, 30, 40, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    overflow-x: auto;
+}
+
+/* ===== Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: #e5e5e5;
+}
+
+    /* Table Head */
+    table thead th {
+        background: linear-gradient(90deg, #ff9f43, #ff6b6b);
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 12px 10px;
+        border: none;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Table Cells */
+    table th,
+    table td {
+        text-align: center;
+        padding: 12px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    /* Table Rows */
+    table tbody tr {
+        background: rgba(45, 45, 45, 0.8);
+        transition: all 0.3s ease;
+    }
+
+        table tbody tr:nth-child(even) {
+            background: rgba(55, 55, 55, 0.8);
+        }
+
+        /* Table Hover */
+        table tbody tr:hover {
+            background: linear-gradient(90deg, #ffcc00, #ff9900);
+            color: #1a1a1a;
+            transform: scale(1.01);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+            table tbody tr:hover td {
+                border-color: rgba(255, 204, 0, 0.6);
+            }
+
+/* ===== Status Badges ===== */
+.badge-active {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.badge-inactive {
+    background-color: #f44336;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* ===== Action Buttons ===== */
+.action-btn {
+    padding: 4px 10px;
+    margin: 0 3px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9rem;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #2196F3;
+}
+
+.btn-delete {
+    background: #f44336;
+}
+
+.btn-view {
+    background: #4CAF50;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px) scale(1.05);
+    opacity: 0.9;
+}
+
+/* ===== Scrollbar Styling ===== */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff9900, #ffcc00);
+    border-radius: 10px;
+}
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #ffcc00, #ffaa00);
+    }

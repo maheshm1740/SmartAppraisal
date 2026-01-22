@@ -1,0 +1,88 @@
+﻿@model DLSmartAppraisal.Model.UserDetails
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Profile";
+
+    var roleMap = new Dictionary<int, string>
+    {
+        {1, "Admin"},
+        {2, "SME"},
+        {3, "Candidate"},
+        {4, "PM"},
+        {5, "HR"}
+    };
+
+    var roleDescription = new Dictionary<int, string>
+{
+    {1, "Admin"},
+    {2, "Subject Matter Expert"},
+    {3, "Candidate"},
+    {4, "Performance Manager"},
+    {5, "Human Resource Manager"}
+};
+
+
+    var designationMap = new Dictionary<int, string>
+    {
+        {1, "Senior Software Developer"},
+        {2, "Assistant Manager"},
+        {3, "CEO"},
+        {4, "Project Manager"},
+        {5, "Tech Lead"}
+    };
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/profile.css" />
+
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar">
+                <i class="bi bi-person-circle"></i>
+            </div>
+            <h2>@Model.Name</h2>
+            <p class="role">
+                @(roleMap.ContainsKey(Model.RoleId) ? roleDescription[Model.RoleId] : "N/A")
+            </p>
+        </div>
+
+        <div class="profile-body">
+            <div class="info-row">
+                <span class="label"><i class="bi bi-person-badge"></i> User ID:</span>
+                <span class="value">@Model.UserId</span>
+            </div>
+
+            <div class="info-row">
+                <span class="label"><i class="bi bi-envelope"></i> Email:</span>
+                <span class="value">@Model.Email</span>
+            </div>
+
+            <div class="info-row">
+                <span class="label"><i class="bi bi-card-list"></i> Employee ID:</span>
+                <span class="value">@Model.EmpId</span>
+            </div>
+
+            <div class="info-row">
+                <span class="label"><i class="bi bi-briefcase"></i> Designation:</span>
+                <span class="value">
+                    @(designationMap.ContainsKey(Model.DesignationId) ? designationMap[Model.DesignationId] : "N/A")
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="label"><i class="bi bi-shield-lock"></i> Role:</span>
+                <span class="value">
+                    @(roleMap.ContainsKey(Model.RoleId) ? roleMap[Model.RoleId] : "N/A")
+                </span>
+            </div>
+        </div>
+
+        <div class="profile-footer">
+            <a asp-controller="Home" asp-action="Index" class="btn-outline-light">
+                <i class="bi bi-house-door"></i> Back to Home
+            </a>
+        </div>
+    </div>
+</div>

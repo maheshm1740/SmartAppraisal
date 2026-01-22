@@ -1,0 +1,183 @@
+﻿/* ===== Page Background ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding-top: 70px; /* space for fixed navbar */
+    color: #f1f1f1;
+}
+
+/* ===== Container ===== */
+.container-competency {
+    max-width: 900px;
+    margin: 50px auto;
+}
+
+/* ===== Card Styling (Glassmorphism) ===== */
+.card-gradient {
+    border-radius: 18px;
+    padding: 40px 35px;
+    max-width: 460px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #f5faff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+    .card-gradient:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    }
+
+/* ===== Fade-in Animation ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Table Styling ===== */
+.table-competency {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+    .table-competency th {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .table-competency td {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 10px;
+        color: #ddd;
+    }
+
+    .table-competency tr:hover td {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+/* ===== Buttons ===== */
+.btn-gradient {
+    background: linear-gradient(to right, #43cea2, #185a9d);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+.btn-light {
+    background-color: #3a3a3a;
+    color: #fff;
+    border: none;
+}
+
+    .btn-light:hover {
+        background-color: #555;
+    }
+
+/* ===== Form Inputs ===== */
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* Disable browser autofill color */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Input placeholders */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Input focus effects */
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    outline: none;
+    box-shadow: 0 0 5px #43cea2;
+}
+
+/* ===== Dropdown Styling Fix ===== */
+.form-select {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+    .form-select option {
+        background-color: #1e272e; /* solid dark background */
+        color: #fff;
+    }
+
+        .form-select option:hover {
+            background-color: #2f3640;
+        }
+
+/* ===== Headings ===== */
+.card-gradient h4 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* ===== Alert Styling ===== */
+.alert-success {
+    background-color: #2e7d32;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background-color: #c62828;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .container-competency {
+        margin: 20px;
+    }
+
+    .card-gradient {
+        padding: 25px;
+    }
+}

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DLSmartAppraisal.Model.Question>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Questions List";
+}
+
+<link rel="stylesheet" href="~/css/questions.css" />
+
+<div class="container">
+    <div class="glass-card">
+        <div class="card-header">
+            <h2>Questions List</h2>
+        </div>
+
+        @if (TempData["Message"] != null)
+        {
+            <div id="success-message" class="alert alert-success text-center">
+                @TempData["Message"]
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const msg = document.getElementById('success-message');
+                    if (msg) {
+                        msg.style.opacity = '0';
+                        setTimeout(() => msg.remove(), 500);
+                    }
+                }, 2000);
+            </script>
+
+            <style>
+                #success-message {
+                    transition: opacity 0.5s ease;
+                    opacity: 1;
+                    margin-bottom: 15px;
+                }
+            </style>
+        }
+
+        <div class="table-responsive">
+            <table class="table-grid">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Question</th>
+                        <th>Correct Answer</th>
+                        <th>Created By</th>
+                        <th>Competency</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.QuestionText</td>
+                            <td>@item.CorrectAnswer</td>
+                            <td>@item.CreatedBy</td>
+                            <td>
+                                @(ViewBag.Competencies.ContainsKey(item.ComptencyId)
+                                                            ? ViewBag.Competencies[item.ComptencyId]
+                                                            : "N/A")
+                        </td>
+                        <td>
+                            @if (!item.IsReviewed)
+                                {
+                                    <form asp-action="ReviewQuestion" method="get" style="display:inline;">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="gradient-btn">Review</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-secondary" disabled>Reviewed</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end mt-3">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-light">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .gradient-btn {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        border: none;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .gradient-btn:hover {
+            background: linear-gradient(90deg, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+    .btn-secondary {
+        background-color: gray;
+        color: white;
+        cursor: not-allowed;
+        border-radius: 6px;
+        padding: 8px 14px;
+        border: none;
+    }
+</style>

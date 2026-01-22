@@ -1,0 +1,155 @@
+﻿/* ===== Page Background ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ===== Wrapper (Centers Form) ===== */
+.create-assessment-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* adjust for fixed navbar */
+    padding: 20px;
+}
+
+/* ===== Card ===== */
+.create-assessment-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    padding: 35px 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ===== Header ===== */
+.form-title {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+/* ===== Labels ===== */
+.form-label {
+    font-weight: 500;
+    color: #dcdcdc;
+}
+
+/* ===== Inputs & Selects ===== */
+.form-control,
+.form-select {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #43cea2;
+        box-shadow: 0 0 0 0.2rem rgba(67, 206, 162, 0.25);
+        color: #fff;
+    }
+
+    /* ✅ FIXED DROPDOWN TEXT VISIBILITY */
+    .form-select option {
+        background-color: #1e272e; /* dropdown menu background */
+        color: #ffffff; /* visible white text */
+    }
+
+        .form-select option:disabled {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+/* ===== Checkbox ===== */
+.form-check-input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+    .form-check-input:checked {
+        background-color: #43cea2;
+        border-color: #43cea2;
+    }
+
+/* ===== Buttons ===== */
+.btn-gradient {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+.btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+    }
+
+/* ===== Validation ===== */
+.text-danger {
+    color: #ff7675 !important;
+    font-size: 0.9rem;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .create-assessment-card {
+        padding: 25px;
+        width: 95%;
+    }
+
+    .btn-gradient,
+    .btn-outline-light {
+        width: 48%;
+        font-size: 0.9rem;
+    }
+}

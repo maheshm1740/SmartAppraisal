@@ -1,0 +1,185 @@
+﻿/* ===== Global Page Background ===== */
+body {
+    background: linear-gradient(135deg, #2d3436, #1e272e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 40px 0;
+    min-height: 100vh;
+}
+
+/* ===== Container ===== */
+.container-main {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* ===== Header Section ===== */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background: rgba(40, 48, 72, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+    .header-section h2 {
+        font-size: 1.7rem;
+        color: #fff;
+        font-weight: 600;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        margin: 0;
+    }
+
+/* ===== Add New Button ===== */
+.btn-add {
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+    .btn-add:hover {
+        background: linear-gradient(135deg, #ffcc00, #ff9900);
+        transform: translateY(-2px) scale(1.03);
+    }
+
+/* ===== Success Alert ===== */
+.alert-success-custom {
+    background: rgba(76, 175, 80, 0.15);
+    border-left: 5px solid #4caf50;
+    color: #b2fab4;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+    transition: opacity 0.5s ease;
+}
+
+    .alert-success-custom .btn-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: transparent;
+        border: none;
+        color: #fff;
+    }
+
+/* ===== Table Container ===== */
+.table-container {
+    background: rgba(25, 30, 40, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    overflow-x: auto;
+}
+
+/* ===== Table Styling ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: #e5e5e5;
+}
+
+thead th {
+    background: linear-gradient(90deg, #ff9f43, #ff6b6b);
+    color: #fff;
+    padding: 12px 10px;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+tbody td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+tbody tr {
+    background: rgba(50, 50, 50, 0.7);
+    transition: all 0.3s ease;
+}
+
+    tbody tr:nth-child(even) {
+        background: rgba(60, 60, 60, 0.7);
+    }
+
+    tbody tr:hover {
+        background: linear-gradient(90deg, #ffcc00, #ff9900);
+        color: #1a1a1a;
+        transform: scale(1.01);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    }
+
+/* ===== Action Buttons ===== */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-edit,
+.btn-view,
+.btn-delete {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #fff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: #2196F3;
+}
+
+.btn-view {
+    background: #4CAF50;
+}
+
+.btn-delete {
+    background: #f44336;
+}
+
+    .btn-edit:hover,
+    .btn-view:hover,
+    .btn-delete:hover {
+        transform: translateY(-2px) scale(1.05);
+        opacity: 0.9;
+    }
+
+/* ===== Scrollbar Styling ===== */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff9900, #ffcc00);
+    border-radius: 10px;
+}
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #ffcc00, #ffaa00);
+    }

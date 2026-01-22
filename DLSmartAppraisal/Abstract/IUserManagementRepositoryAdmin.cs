@@ -14,5 +14,8 @@ namespace DLSmartAppraisal.Abstract
         string AddUserDetails(UserDetails userDetails);
 
         UserDetails GetUserByUserId(string userId);
+
+        List<UserDetails> GetUsersByRole(int roleId);
+
     }
 }

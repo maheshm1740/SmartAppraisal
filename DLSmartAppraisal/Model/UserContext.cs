@@ -9,15 +9,8 @@ namespace DLSmartAppraisal.Model
 {
     public class UserContext:DbContext
     {
+        public UserContext(DbContextOptions<UserContext> options):base(options){ }
         public DbSet<UserDetails> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if(!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=SmartAppraisalDB;Trusted_Connection=True;TrustServerCertificate=True;");
-            }
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }

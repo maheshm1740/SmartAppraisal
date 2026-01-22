@@ -8,10 +8,9 @@ namespace DLSmartAppraisal.Model
 {
     public class ChangePassword
     {
-        public UserViewModel usermodel { get; set; }
-
+        public string UserId { get; set; }
+        public string OldPassword { get; set; }
         public string newPassword { get; set; }
-
         public string confirmPassword { get; set; }
     }
 }

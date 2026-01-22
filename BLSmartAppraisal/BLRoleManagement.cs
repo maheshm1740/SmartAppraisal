@@ -11,7 +11,12 @@ namespace BLSmartAppraisal
 {
     public class BLRoleManagement
     {
-        IRoleRepository _repo = new RolesRepository();
+        private readonly IRoleRepository _repo;
+
+        public BLRoleManagement(IRoleRepository repo)
+        {
+            _repo = repo;
+        }
 
         public List<RoleDetails> AllRoles()
         {
@@ -20,6 +25,11 @@ namespace BLSmartAppraisal
             if (roles != null) return roles;
 
             return new List<RoleDetails>();
+        }
+
+        public int GetRoleIdByName(string roleName)
+        {
+            return _repo.GetRoleId(roleName);
         }
     }
 }
